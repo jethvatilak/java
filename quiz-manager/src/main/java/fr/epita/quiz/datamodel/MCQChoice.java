@@ -8,31 +8,22 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "STUDENT")
-public class Student {
+@Table(name = "MCQCHOICE")
+public class MCQChoice {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "STUDENT_ID")
+	@Column(name = "MCQCHOICE_ID")
 	private long id;
 	
-	@Column(name = "STUDENT_NAME")
-	private String name;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+	@Column(name = "MCQCHOICE_CHOICE")
+	private String choice;
 	
+	@Column(name = "MCQCHOICE_VALID")
+	private String valid;
+	
+	@Column(name = "QUESTION_ID")
+	private String q_id;
+
 }
+
