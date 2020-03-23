@@ -16,8 +16,8 @@ public class Question {
 	@Column(name = "QUESTION_ID")
 	private long id;
 	
-	@Column(name = "QUESTION_QUESTION")
-	private String question;
+	@Column(name = "QUESTION_TITLE")
+	private String title;
 
 	public long getId() {
 		return id;
@@ -27,12 +27,12 @@ public class Question {
 		this.id = id;
 	}
 
-	public String getQuestion() {
-		return question;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setQuestion(String question) {
-		this.question = question;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 }

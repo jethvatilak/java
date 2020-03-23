@@ -3,36 +3,24 @@ package fr.epita.quiz.services;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.persistence.Query;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import fr.epita.quiz.datamodel.Question;
 
 
-public class QuestionDAO {
-
-	@Inject
-	SessionFactory sf;
-
-	public void create(Question question) {
-      Session session = sf.openSession();
-      session.save(question);
+public class QuestionDAO extends GenericDAO<Question, Long> {
+	
+	public List<Question> search(Question question){
+		String titleParam = question.getTitle();
+		Query searchQuery = em.createQuery("from Question where title = :pTitle");
+		searchQuery.setParameter("pTitle", titleParam);
+		List<Question> resultList = searchQuery.getResultList();
+		return resultList;
 	}
-
-	public void update(Question question) {
-
+	
+	public Question getById(Long id){
+		return em.find(Question.class, id);
 	}
-
-	public void delete(Question question) {
-
-	}
-
-	public List<Question> search(Question question) {
-		return null;
-	}
-
-	public Question getById(Long id) {
-		return null;
-	}
-
 }
