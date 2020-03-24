@@ -1,41 +1,23 @@
 package fr.epita.quiz.services;
 
-import java.util.List;
-
-import javax.inject.Inject;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-
+import java.util.Map;
 import fr.epita.quiz.datamodel.Answer;
 
 public class AnswerDAO extends GenericDAO<Answer, Long>{
 	
-	@Inject
-	SessionFactory sf;
-
-	public void create(Answer answer) {
-      Session session = sf.openSession();
-      session.save(answer);
-	}
-
-	public void update(Answer answer) {
-
-	}
-
-	public void delete(Answer answer) {
-
+	@Override
+	public String getQuery() {
+		return "from Answer";
 	}
 
 	@Override
-	public List<Answer> search(Answer criteria) {
-		// TODO Auto-generated method stub
-		return null;
+	public void setParameters(Map<String, Object> parameters, Answer criteria) {
+		return;
 	}
 
 	@Override
-	public Answer getById(Long id) {
+	public Class<Answer> getEntityClass() {
 		// TODO Auto-generated method stub
-		return null;
+		return Answer.class;
 	}
 }

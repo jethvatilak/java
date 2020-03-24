@@ -11,12 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ANSWER")
+@Table(name = "ANSWERS")
 public class Answer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ANSWER_ID")
+	@Column(name = "ANS_ID")
 	private long id;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -30,6 +30,20 @@ public class Answer {
 //	@ManyToOne
 //	@Column(name = "STUDENT")
 //	private Student student;
+	
+	@ManyToOne
+	@JoinColumn(name="A_USER_FK")
+	private User user;
+	
+	public Answer() {}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public long getId() {
 		return id;

@@ -1,26 +1,25 @@
 package fr.epita.quiz.services;
 
-import java.util.List;
+import java.util.Map;
 
-import javax.inject.Inject;
-import javax.persistence.Query;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import fr.epita.quiz.datamodel.Question;
 
 
 public class QuestionDAO extends GenericDAO<Question, Long> {
 	
-	public List<Question> search(Question question){
-		String titleParam = question.getTitle();
-		Query searchQuery = em.createQuery("from Question where title = :pTitle");
-		searchQuery.setParameter("pTitle", titleParam);
-		List<Question> resultList = searchQuery.getResultList();
-		return resultList;
+	@Override
+	public String getQuery() {
+		return "from Question where title = :pTitle";
 	}
-	
-	public Question getById(Long id){
-		return em.find(Question.class, id);
+
+	@Override
+	public void setParameters(Map<String, Object> parameters, Question criteria) {
+		parameters.put("pTitle", criteria.getTitle());
+		
+	}
+
+	@Override
+	public Class<Question> getEntityClass() {
+		return Question.class;
 	}
 }

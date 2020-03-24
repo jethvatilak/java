@@ -28,7 +28,7 @@ public class TestHibernet {
 		
 		Session openSession = sf.openSession();
 		Question question = new Question();
-		question.setQuestion("How to use Maven?");
+		question.setTitle("How to use Maven?");
 		openSession.save(question);
 		LOGGER.info("Maven saved!");
 		Assert.assertNotEquals(0l, question.getId());
