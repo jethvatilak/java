@@ -1,4 +1,4 @@
-package fr.epita.quiz.quiz_manager;
+package fr.epita.quiz.test;
 
 //import javax.inject.Inject;
 //import javax.inject.Named;
@@ -9,7 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/application.xml")
+@ContextConfiguration(locations = "/applicationContext.xml")
 public class TestMCQAnswerDAO {
 
 //	@Inject

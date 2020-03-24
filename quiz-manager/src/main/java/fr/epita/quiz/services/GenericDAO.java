@@ -29,16 +29,16 @@ public abstract class GenericDAO<T,I> {
 	public abstract String getQuery();
 	public abstract void setParameters(Map<String,Object> parameters, T criteria);
 	
-	public final List<T> search(T criteria){
+	public final List<T> search(T criteria) {
 		Query searchQuery = em.createQuery(getQuery());
 		Map<String, Object> parameters = new LinkedHashMap<String, Object>();
 		setParameters(parameters, criteria);
 		for (Map.Entry<String,Object> entry : parameters.entrySet() ) {
 			searchQuery.setParameter(entry.getKey(), entry.getValue());
 		}
-		return searchQuery.getResultList();
-		
+		return searchQuery.getResultList();		
 	}
+	
 	public final T getById(I id) {
 		return em.find(getEntityClass(), id);
 	}

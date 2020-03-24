@@ -14,19 +14,21 @@
 			<value>select * from Question</value>
 		</constructor-arg>
 	</bean>
-	
+
 	<bean id="examQuery" class="java.lang.String">
 		<constructor-arg>
 			<value>select * from Exam</value>
 		</constructor-arg>
 	</bean>
-	
+
 	<bean id="answerQuery" class="java.lang.String">
 		<constructor-arg>
 			<value>select * from Answer</value>
 		</constructor-arg>
 	</bean>
-	
+
+	<bean id="questionDAO"
+		class="fr.epita.quiz.services.dao.QuestionDAO" />
 
 	<bean id="mainDS"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -51,28 +53,24 @@
 		</property>
 	</bean>
 
-<!--  	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+	<!-- <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"> 
+		<property name="dataSource" ref="mainDS" /> <property name="hibernateProperties" 
+		ref="hibernateProperties" /> <property name="packagesToScan"> <list> <value>fr.epita.quiz.datamodel</value> 
+		</list> </property> </bean> -->
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="mainDS" />
-		<property name="hibernateProperties"
-			ref="hibernateProperties" />
-		<property name="packagesToScan">
-			<list>
-				<value>fr.epita.quiz.datamodel</value>
-			</list>
+		<property name="packagesToScan"
+			value="fr.epita.quiz.datamodel" />
+		<property name="jpaVendorAdapter">
+			<bean
+				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 		</property>
-	</bean> -->
-	
-	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="mainDS" />
-        <property name="packagesToScan" value="fr.epita.quiz.datamodel" />
-        <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
-        </property>
-        <property name="jpaProperties" ref="hibernateProperties" />
-    </bean>  
-    
-    
+		<property name="jpaProperties" ref="hibernateProperties" />
+	</bean>
+
+
 	<bean id="transactionManager"
 		class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory"

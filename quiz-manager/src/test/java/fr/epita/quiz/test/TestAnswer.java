@@ -1,4 +1,4 @@
-package fr.epita.quiz.quiz_manager;
+package fr.epita.quiz.test;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -9,15 +9,16 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/application.xml")
-public class TestExam {
-
+@ContextConfiguration(locations = "/applicationContext.xml")
+public class TestAnswer {
+	
 	@Inject
-	@Named("examQuery") 
-	String query;	 
+	@Named("answerQuery") 
+	String query;
 	
 	@Test
-	public void testExam() {
-		System.out.println("test exam class");
+	public void testAnswer() {
+		System.out.println("test answer class");
 	}
+
 }

@@ -1,4 +1,4 @@
-package fr.epita.quiz.quiz_manager;
+package fr.epita.quiz.test;
 
 import javax.inject.Inject;
 
@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import fr.epita.quiz.datamodel.Question;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/application.xml")
+@ContextConfiguration(locations = "/applicationContext.xml")
 public class TestHibernet {
 	
 	private static final Logger LOGGER = LogManager.getLogger(TestHibernet.class);

@@ -1,24 +1,23 @@
-package fr.epita.quiz.quiz_manager;
+package fr.epita.quiz.test;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/application.xml")
-public class TestSpring {
+@ContextConfiguration(locations = "/applicationContext.xml")
+public class TestExam {
 
 	@Inject
-	@Named("firstQuery")
-	String query;
+	@Named("examQuery") 
+	String query;	 
 	
 	@Test
-	public void testInject() {
-		Assert.assertNotNull(query);
+	public void testExam() {
+		System.out.println("test exam class");
 	}
 }
