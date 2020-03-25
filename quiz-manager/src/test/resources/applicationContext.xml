@@ -1,15 +1,18 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
+<beans  xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<bean id="questionQuery" class="java.lang.String">
+	<!-- <bean id="questionQuery" class="java.lang.String">
 		<constructor-arg>
 			<value>select * from Question</value>
 		</constructor-arg>
@@ -19,23 +22,33 @@
 		<constructor-arg>
 			<value>select * from Exam</value>
 		</constructor-arg>
-	</bean>
+	</bean>-->
 
-	<bean id="answerQuery" class="java.lang.String">
-		<constructor-arg>
-			<value>select * from Answer</value>
-		</constructor-arg>
-	</bean>
-
-	<bean id="questionDAO"
-		class="fr.epita.quiz.services.dao.QuestionDAO" />
+	
+	
+	<!-- <context:component-scan base-package="fr.epita.quiz.services,fr.epita.quiz.services.business">
+		<context:include-filter type="regex" expression=".*DAO"/>
+		<context:include-filter type="regex" expression=".*DataService"/>
+	</context :component-scan>
+-->	
+	 <bean id="questionDAO"
+		class="fr.epita.quiz.services.QuestionDAO" />
+		
+	<bean id="userDAO"
+		class="fr.epita.quiz.services.UserDAO" /> 
+		
+		<bean id="answerDAO"
+		class="fr.epita.quiz.services.AnswerDAO" />
+		
+		<bean id="examDataService"
+		class="fr.epita.quiz.services.business.ExamDataService" />
 
 	<bean id="mainDS"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="url"
-			value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"></property>
-		<property name="username" value="test"></property>
-		<property name="password" value="test"></property>
+			value="jdbc:h2:tcp://localhost/~/test;DB_CLOSE_DELAY=-1"></property>
+		<property name="username" value="sa"></property>
+		<property name="password" value=""></property>
 		<property name="driverClassName" value="org.h2.Driver"></property>
 
 	</bean>
@@ -58,24 +71,22 @@
 		ref="hibernateProperties" /> <property name="packagesToScan"> <list> <value>fr.epita.quiz.datamodel</value> 
 		</list> </property> </bean> -->
 
-	<bean id="entityManagerFactory"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="dataSource" ref="mainDS" />
-		<property name="packagesToScan"
-			value="fr.epita.quiz.datamodel" />
-		<property name="jpaVendorAdapter">
-			<bean
-				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
-		</property>
-		<property name="jpaProperties" ref="hibernateProperties" />
-	</bean>
-
-
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="mainDS" />
+        <property name="packagesToScan" value="fr.epita.quiz.datamodel" />
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+        </property>
+        <property name="jpaProperties" ref="hibernateProperties" />
+		
+    </bean>  
+    
+    
 	<bean id="transactionManager"
 		class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory"
 			ref="entityManagerFactory" />
 	</bean>
-
+	<tx:annotation-driven />
 
 </beans>

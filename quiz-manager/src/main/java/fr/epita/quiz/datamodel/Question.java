@@ -24,9 +24,9 @@ public class Question {
 	@Column(name = "QUE_TITLE")
 	private String title;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "ANSWERS_QUESTIONS")
-	List<Answer> answers;
+//	@OneToMany(cascade = CascadeType.ALL)
+//	@JoinTable(name = "ANSWERS_QUESTIONS")
+//	List<Answer> answers;
 	
 	public Question() {}
 

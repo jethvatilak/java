@@ -19,6 +19,9 @@ public class Answer {
 	@Column(name = "ANS_ID")
 	private long id;
 	
+	@Column(name="ANS_CONTENT")
+	private String content;
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ANS_QUE_FK")
 	private Question question;
@@ -51,6 +54,14 @@ public class Answer {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public Question getQuestion() {

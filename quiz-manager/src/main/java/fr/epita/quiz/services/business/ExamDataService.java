@@ -12,6 +12,7 @@ import fr.epita.quiz.datamodel.ClassNullValueException;
 import fr.epita.quiz.datamodel.Question;
 import fr.epita.quiz.datamodel.User;
 import fr.epita.quiz.services.AnswerDAO;
+import fr.epita.quiz.services.GenericDAO;
 import fr.epita.quiz.services.QuestionDAO;
 import fr.epita.quiz.services.UserDAO;
 
@@ -36,17 +37,19 @@ public class ExamDataService {
 			questionDAO.isNull(question); //check question is null or not
 			answerDAO.isNull(answer); //check answer is null or not
 			
-			userDAO.isUserTableExist(); //check the user table is created or not
-			userDAO.isUserExist(user); //check the user exist or not
-			
-			questionDAO.isQuestionTableExist(); //check the question table is created or not
-			questionDAO.isQuestionExist(question); //check the question exist or not
-			
-			answerDAO.isAnswerTableExist(); //check the answer table is created or not
-			answerDAO.isAnswerExist(answer); //check the answer exist or not
+//			userDAO.isUserTableExist(); //check the user table is created or not
+//			userDAO.isUserExist(user); //check the user exist or not
+//			
+//			questionDAO.isQuestionTableExist(); //check the question table is created or not
+//			questionDAO.isQuestionExist(question); //check the question exist or not
+//			
+//			answerDAO.isAnswerTableExist(); //check the answer table is created or not
+//			answerDAO.isAnswerExist(answer); //check the answer exist or not
 		} catch (ClassNullValueException ex) {
 			LOGGER.info(ex);
 		}	
+		
+//		GenericDAO dao = new GenericDAO(UserDAO.class, user.getLoginName();
 		
 		//main logic part
 				
