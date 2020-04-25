@@ -1,0 +1,8 @@
+fr\epita\quiz\datamodel\User.class
+fr\epita\quiz\datamodel\Student.class
+fr\epita\quiz\services\dao\GenericDAO.class
+fr\epita\quiz\datamodel\MCQAnswer.class
+fr\epita\quiz\datamodel\MCQChoice.class
+fr\epita\quiz\services\dao\UserDAO.class
+fr\epita\quiz\datamodel\Exam.class
+fr\epita\quiz\datamodel\Question.class
