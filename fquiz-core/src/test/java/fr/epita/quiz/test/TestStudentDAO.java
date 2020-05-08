@@ -1,6 +1,5 @@
 package fr.epita.quiz.test;
 
-import java.time.format.TextStyle;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -26,17 +25,17 @@ public class TestStudentDAO {
 	StudentDAO dao;
 
 	@Test
-	public void testAddUser() throws CustomExtension {
+	public void testAddStudent() throws CustomExtension {
 		Student st = new Student();
-		st.setS_name("student1");
+		st.setS_name("st2");
 		dao.create(st);
 
 		try {
-			List<Student> list = dao.search(st, false);
+			List<Student> list = dao.getRecords(st);
 			if (list.size() > 0) {
-				LOGGER.info(this.getClass().getName()+" test class successful");
+				LOGGER.info(this.getClass().getSimpleName()+" test class successful");
 			} else {
-				throw new CustomExtension(this.getClass().getName()+" test not successful");
+				throw new CustomExtension(this.getClass().getSimpleName()+" test not successful");
 			}
 		} catch (CustomExtension e) {
 			throw e;

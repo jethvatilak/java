@@ -33,7 +33,7 @@ public class TestMCQAnswerDAO {
 		dao.create(ans);
 		
 		try {
-			List<MCQAnswer> list = dao.search(ans, false);
+			List<MCQAnswer> list = dao.getRecords(ans);
 			if (list.size() > 0) {
 				LOGGER.info(this.getClass().getName()+" test class successful");
 			} else {

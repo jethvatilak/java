@@ -33,17 +33,27 @@ public abstract class GenericDAO<T, I> {
 	
 	public abstract Class<T> getEntityClass();
 		
-	public List<T> search(T criteria, boolean isSearch) {
-		Query searchQuery = isSearch ? em.createQuery(getSearchQuery()) : em.createQuery(getQuery());
+	public List<T> search(T criteria) {
+		Query searchQuery = em.createQuery(getSearchQuery());
 		Map<String, Object> parameters = new LinkedHashMap<String, Object>();
 		setParameters(parameters, criteria);
 		for (Map.Entry<String, Object> entry : parameters.entrySet()) {
 			searchQuery.setParameter(entry.getKey(), entry.getValue());
 		}
+		System.out.println(searchQuery);
+		return searchQuery.getResultList();
+	}
+	
+	public List<T> getRecords(T criteria) {
+		Query searchQuery = em.createQuery(getQuery());
 		return searchQuery.getResultList();
 	}
 
+	@Transactional(value = TxType.REQUIRED)
 	public T getById(I id) {
+		System.out.println("Generic DAO");
+		System.out.println(getEntityClass());
+		System.out.println(id);
 		return em.find(getEntityClass(), id);
 	}
 }

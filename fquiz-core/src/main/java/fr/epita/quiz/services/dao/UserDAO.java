@@ -8,7 +8,7 @@ public class UserDAO extends GenericDAO<User, Long> {
 
 	@Override
 	public String getQuery() {
-		return "from User";
+		return "from " + getEntityClass().getName();
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class UserDAO extends GenericDAO<User, Long> {
 
 	@Override
 	public String getSearchQuery() {
-		return "from User where u_name = :title";
+		return "from " + getEntityClass().getName()+ "where u_name = :title";
 	}
 
 }

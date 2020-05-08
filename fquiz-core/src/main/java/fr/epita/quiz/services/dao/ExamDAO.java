@@ -8,26 +8,21 @@ public class ExamDAO extends GenericDAO<Exam, Long> {
 
 	@Override
 	public String getQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return "from " + getEntityClass().getSimpleName();
 	}
 
 	@Override
 	public void setParameters(Map<String, Object> parameters, Exam criteria) {
-		// TODO Auto-generated method stub
-		
+		parameters.put("title", criteria.getE_title());
 	}
 
 	@Override
 	public Class<Exam> getEntityClass() {
-		// TODO Auto-generated method stub
-		return null;
+		return Exam.class;
 	}
 
 	@Override
 	public String getSearchQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return "from " + getEntityClass().getSimpleName() + " where e_title = :title";
 	}
-
 }

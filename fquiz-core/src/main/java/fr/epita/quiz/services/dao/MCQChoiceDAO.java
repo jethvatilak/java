@@ -8,26 +8,22 @@ public class MCQChoiceDAO extends GenericDAO<MCQChoice, Long> {
 
 	@Override
 	public String getQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return "from " + getEntityClass().getSimpleName();
 	}
 
 	@Override
 	public void setParameters(Map<String, Object> parameters, MCQChoice criteria) {
-		// TODO Auto-generated method stub
-		
+		parameters.put("title", criteria.getQuestion().getQ_id());
 	}
 
 	@Override
 	public Class<MCQChoice> getEntityClass() {
-		// TODO Auto-generated method stub
-		return null;
+		return MCQChoice.class;
 	}
 
 	@Override
 	public String getSearchQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return "from " + getEntityClass().getSimpleName() + " where QUESTION_FK = :title";
 	}
 
 }

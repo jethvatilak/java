@@ -1,6 +1,7 @@
 package fr.epita.quiz.datamodel;
 
 import javax.inject.Named;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,19 +13,19 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int u_id;
+	private long u_id;
 	
-	@Named(value = "USER_NAME")
+	@Column(unique = true)
 	private String u_name;
 	
 	@Named(value = "U_PWD")
 	private String u_pwd;
 
-	public int getU_id() {
+	public long getU_id() {
 		return u_id;
 	}
 
-	public void setU_id(int u_id) {
+	public void setU_id(long u_id) {
 		this.u_id = u_id;
 	}
 

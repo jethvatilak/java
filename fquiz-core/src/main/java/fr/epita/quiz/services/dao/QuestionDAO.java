@@ -1,5 +1,6 @@
 package fr.epita.quiz.services.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import fr.epita.quiz.datamodel.Question;
@@ -8,26 +9,21 @@ public class QuestionDAO extends GenericDAO<Question, Long> {
 
 	@Override
 	public String getQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return "from " + getEntityClass().getSimpleName();
 	}
 
 	@Override
 	public void setParameters(Map<String, Object> parameters, Question criteria) {
-		// TODO Auto-generated method stub
-		
+		parameters.put("title", criteria.getExam().getE_id());
 	}
 
 	@Override
 	public Class<Question> getEntityClass() {
-		// TODO Auto-generated method stub
-		return null;
+		return Question.class;
 	}
 
 	@Override
 	public String getSearchQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return "from " + getEntityClass().getSimpleName() + " where A_EXAM_FK = :title";
 	}
-
 }

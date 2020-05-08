@@ -1,33 +1,30 @@
 package fr.epita.quiz.services.dao;
 
+import java.util.List;
 import java.util.Map;
 
+import fr.epita.quiz.datamodel.Question;
 import fr.epita.quiz.datamodel.Student;
 
 public class StudentDAO extends GenericDAO<Student, Long> {
 
 	@Override
 	public String getQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return "from " + getEntityClass().getSimpleName();
 	}
 
 	@Override
 	public void setParameters(Map<String, Object> parameters, Student criteria) {
-		// TODO Auto-generated method stub
-		
+		parameters.put("title", criteria.getS_name());
 	}
 
 	@Override
 	public Class<Student> getEntityClass() {
-		// TODO Auto-generated method stub
-		return null;
+		return Student.class;
 	}
 
 	@Override
 	public String getSearchQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return "from " + getEntityClass().getSimpleName() + " where s_name = :title";
 	}
-
 }

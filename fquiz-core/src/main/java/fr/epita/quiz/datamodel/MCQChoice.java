@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Named(value = "MCQCHOICE")
@@ -14,7 +16,9 @@ public class MCQChoice {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int mc_id;
 	
-	private int q_id;
+	@ManyToOne
+	@JoinColumn(name="QUESTION_FK")
+	private Question question;
 	
 	private String mc_choice;
 	
@@ -28,12 +32,12 @@ public class MCQChoice {
 		this.mc_id = mc_id;
 	}
 
-	public int getQ_id() {
-		return q_id;
+	public Question getQuestion() {
+		return question;
 	}
 
-	public void setQ_id(int q_id) {
-		this.q_id = q_id;
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
 
 	public String getMc_choice() {

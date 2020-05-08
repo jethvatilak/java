@@ -25,18 +25,18 @@ public class TestExamDAO {
 	ExamDAO dao;
 
 	@Test
-	public void testAddUser() throws CustomExtension {
+	public void testAddExam() throws CustomExtension {
 
 		Exam exam = new Exam();
 		exam.setE_title("admin");
 		dao.create(exam);
 
 		try {
-			List<Exam> list = dao.search(exam, false);
+			List<Exam> list = dao.getRecords(exam);
 			if (list.size() > 0) {
-				LOGGER.info(this.getClass().getName()+" test class successful");
+				LOGGER.info(this.getClass().getSimpleName()+" test class successful");
 			} else {
-				throw new CustomExtension(this.getClass().getName()+" test not successful");
+				throw new CustomExtension(this.getClass().getSimpleName()+" test not successful");
 			}
 		} catch (CustomExtension e) {
 			throw e;

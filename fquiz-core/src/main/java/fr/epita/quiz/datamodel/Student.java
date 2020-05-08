@@ -12,16 +12,16 @@ public class Student {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int s_id;
+	private long s_id;
 	
 	@Named(value = "S_NAME")
 	private String s_name;
 
-	public int getS_id() {
+	public long getS_id() {
 		return s_id;
 	}
 
-	public void setS_id(int s_id) {
+	public void setS_id(long s_id) {
 		this.s_id = s_id;
 	}
 

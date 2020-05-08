@@ -1,10 +1,13 @@
 package fr.epita.quiz.datamodel;
 
 import javax.inject.Named;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Named(value = "EXAM")
@@ -14,7 +17,7 @@ public class Exam {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long e_id;
 	
-	@Named(value = "E_TITLE")
+	@Column(unique = true)
 	private String e_title;
 
 	public long getE_id() {
@@ -32,6 +35,4 @@ public class Exam {
 	public void setE_title(String e_title) {
 		this.e_title = e_title;
 	}
-
-	
 }
